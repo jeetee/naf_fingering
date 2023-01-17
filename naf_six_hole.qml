@@ -5,7 +5,7 @@
 //
 //  Copyright (C) 2012 lasconic
 //  additional development by Scott Scheiman
-//  MS3 port by jeetee
+//  MS3 and 4 port by jeetee
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License version 2.
@@ -25,8 +25,11 @@ import MuseScore 3.0
 
 MuseScore {
 	menuPath: "Plugins.NAF Fingering (6 Hole)"
+	title: "NAF Fingering (6 Hole)"
+	version: "4.0.0"
 	description: "6-hole Native American Flute fingering plugin"
-	version: "1.0.0"
+	thumbnailName: "naf-six-hole.png"
+	categoryCode: "composing-arranging-tools"
 	requiresScore: true
 
 	onRun: {
@@ -39,6 +42,7 @@ MuseScore {
 		cursor.staff = 0;
 		cursor.voice = 0;
 
+		curScore.startCmd();
 		while (cursor.segment) {
 			if ((cursor.element && (cursor.element.type == Element.CHORD))
 				&& (cursor.element.notes && (cursor.element.notes.length))
@@ -67,5 +71,6 @@ MuseScore {
 			}
 			cursor.next();
 		}
+		curScore.endCmd();
 	}
 }
